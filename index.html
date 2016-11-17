@@ -1,0 +1,291 @@
+<!DOCTYPE>
+
+<html>
+    <head>
+        <title>Sudoku Helper</title>
+        <meta charset="UTF-8">
+        <script src="helper.js"></script>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            td {
+                width:40px;
+                height:40px;
+                border: solid thin;
+                padding: 0;
+
+            }
+            td > input {
+                text-align:center;
+                padding: 0;
+                height: 40px;
+                width: 40px;
+                font-size: 30px;
+            }
+
+            colgroup, tbody {
+                border:dashed medium orange;
+            }
+
+            .validCell {
+            }
+            .invalidCell {
+                background-color:red;
+            }
+
+            .validRow {
+            }
+            .invalidRow {
+                border: medium blue solid;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h2>Sudoku Helper</h2>
+        </header>
+        <div>
+            <button id="checkGridButt">Check Grid</button>
+            <span id="checkOut"></span>
+            <table id="SudokuTable">
+                <colgroup>
+                    <col><col><col>
+                </colgroup>
+                <colgroup>
+                    <col><col><col>
+                </colgroup>
+                <colgroup>
+                    <col><col><col>
+                </colgroup>
+
+                <tbody>
+                    <tr id="r1"><!-- Top Row -->
+                        <td><input class="cell" id="a00" autocomplete="off" type="text" maxlength="1" size="1"></td>
+                        <td><input class="cell" id="a01" autocomplete="off" type="text" maxlength="1" size="1"></td>
+                        <td><input class="cell" id="a02" autocomplete="off" type="text" maxlength="1" size="1" value="9"></td>
+                        <td><input class="cell" id="a03" autocomplete="off" type="text" maxlength="1" size="1"></td>
+                        <td><input class="cell" id="a04" autocomplete="off" type="text" maxlength="1" size="1"></td>
+                        <td><input class="cell" id="a05" autocomplete="off" type="text" maxlength="1" size="1"></td>
+                        <td><input class="cell" id="a06" autocomplete="off" type="text" maxlength="1" size="1" value="5"></td>
+                        <td><input class="cell" id="a07" autocomplete="off" type="text" maxlength="1" size="1" value="3"></td>
+                        <td><input class="cell" id="a08" autocomplete="off" type="text" maxlength="1" size="1"></td>
+                    </tr>
+                    <tr id="r2"><!-- Second Row -->
+                        <td><input class="" id="a10" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a11" autocomplete="off"  type="text" maxlength="1" size="1" value="4"></td>
+                        <td><input class="" id="a12" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a13" autocomplete="off"  type="text" maxlength="1" size="1" value="5"></td>
+                        <td><input class="" id="a14" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a15" autocomplete="off"  type="text" maxlength="1" size="1" value="3"></td>
+                        <td><input class="" id="a16" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a17" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a18" autocomplete="off"  type="text" maxlength="1" size="1" value="7"></td>
+                    </tr>
+                    <tr id="r3">
+                        <td><input class="" id="a20" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a21" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a22" autocomplete="off"  type="text" maxlength="1" size="1" value="6"></td>
+                        <td><input class="" id="a23" autocomplete="off"  type="text" maxlength="1" size="1" value="7"></td>
+                        <td><input class="" id="a24" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a25" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a26" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a27" autocomplete="off"  type="text" maxlength="1" size="1" value="4"></td>
+                        <td><input class="" id="a28" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr id="r4">
+                        <td><input class="cell" id="a30" autocomplete="off"  type="text" maxlength="1" size="1" value="3"></td>
+                        <td><input class="" id="a31" autocomplete="off"  type="text" maxlength="1" size="1" value="8"></td>
+                        <td><input class="" id="a32" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a33" autocomplete="off"  type="text" maxlength="1" size="1" value="1"></td>
+                        <td><input class="" id="a34" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a35" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a36" autocomplete="off"  type="text" maxlength="1" size="1" value="6"></td>
+                        <td><input class="" id="a37" autocomplete="off"  type="text" maxlength="1" size="1" value="2"></td>
+                        <td><input class="" id="a38" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                    </tr>
+                    <tr id="r5">
+                        <td><input class="" id="a40" autocomplete="off"  type="text" maxlength="1" size="1" value="9"></td>
+                        <td><input class="" id="a41" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a42" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a43" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a44" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a45" autocomplete="off"  type="text" maxlength="1" size="1" value="5"></td>
+                        <td><input class="" id="a46" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a47" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a48" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                    </tr>
+                    <tr id="r6">
+                        <td><input class="" id="a50" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a51" autocomplete="off"  type="text" maxlength="1" size="1" value="1"></td>
+                        <td><input class="" id="a52" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a53" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a54" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a55" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a56" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a57" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a58" autocomplete="off"  type="text" maxlength="1" size="1" value="9"></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr id="r7">
+                        <td><input class="cell" id="a60" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a61" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a62" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a63" autocomplete="off"  type="text" maxlength="1" size="1" value="4"></td>
+                        <td><input class="" id="a64" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a65" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a66" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a67" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a68" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                    </tr>
+                    <tr id="r8">
+                        <td><input class="" id="a70" autocomplete="off"  type="text" maxlength="1" size="1" value="4"></td>
+                        <td><input class="" id="a71" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a72" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a73" autocomplete="off"  type="text" maxlength="1" size="1" value="6"></td>
+                        <td><input class="" id="a74" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a75" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a76" autocomplete="off"  type="text" maxlength="1" size="1" value="1"></td>
+                        <td><input class="" id="a77" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a78" autocomplete="off"  type="text" maxlength="1" size="1" value="8"></td>
+                    </tr>
+                    <tr id="r9">
+                        <td><input class="" id="a80" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a81" autocomplete="off"  type="text" maxlength="1" size="1" value="7"></td>
+                        <td><input class="" id="a82" autocomplete="off"  type="text" maxlength="1" size="1" value="8"></td>
+                        <td><input class="" id="a83" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a84" autocomplete="off"  type="text" maxlength="1" size="1" value="5"></td>
+                        <td><input class="" id="a85" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a86" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a87" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                        <td><input class="" id="a88" autocomplete="off"  type="text" maxlength="1" size="1"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+        	<button id="getSuggestionsButt">Suggestions</button>
+        	<span id="sugOutput"></span>
+        	<table id="SuggestionTable">
+                <colgroup>
+                    <col><col><col>
+                </colgroup>
+                <colgroup>
+                    <col><col><col>
+                </colgroup>
+                <colgroup>
+                    <col><col><col>
+                </colgroup>
+
+                <tbody>
+                    <tr id="sr1"><!-- Top Row -->
+                        <td class="cell" id="s00"></td>
+                        <td class="cell" id="s01"></td>
+                        <td class="cell" id="s02"></td>
+                        <td class="cell" id="s03"></td>
+                        <td class="cell" id="s04"></td>
+                        <td class="cell" id="s05"></td>
+                        <td class="cell" id="s06"></td>
+                        <td class="cell" id="s07"></td>
+                        <td class="cell" id="s08"></td>
+                    </tr>
+                    <tr id="sr2"><!-- Second Row -->
+                        <td class="cell" id="s10"></td>
+                        <td class="cell" id="s11"></td>
+                        <td class="cell" id="s12"></td>
+                        <td class="cell" id="s13"></td>
+                        <td class="cell" id="s14"></td>
+                        <td class="cell" id="s15"></td>
+                        <td class="cell" id="s16"></td>
+                        <td class="cell" id="s17"></td>
+                        <td class="cell" id="s18"></td>
+                    </tr>
+                    <tr id="sr3">
+                        <td class="cell" id="s20"></td>
+                        <td class="cell" id="s21"></td>
+                        <td class="cell" id="s22"></td>
+                        <td class="cell" id="s23"></td>
+                        <td class="cell" id="s24"></td>
+                        <td class="cell" id="s25"></td>
+                        <td class="cell" id="s26"></td>
+                        <td class="cell" id="s27"></td>
+                        <td class="cell" id="s28"></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr id="sr4">
+                        <td class="cell" id="s30"></td>
+                        <td class="cell" id="s31"></td>
+                        <td class="cell" id="s32"></td>
+                        <td class="cell" id="s33"></td>
+                        <td class="cell" id="s34"></td>
+                        <td class="cell" id="s35"></td>
+                        <td class="cell" id="s36"></td>
+                        <td class="cell" id="s37"></td>
+                        <td class="cell" id="s38"></td>
+                    </tr>
+                    <tr id="sr5">
+                        <td class="cell" id="s40"></td>
+                        <td class="cell" id="s41"></td>
+                        <td class="cell" id="s42"></td>
+                        <td class="cell" id="s43"></td>
+                        <td class="cell" id="s44"></td>
+                        <td class="cell" id="s45"></td>
+                        <td class="cell" id="s46"></td>
+                        <td class="cell" id="s47"></td>
+                        <td class="cell" id="s48"></td>
+                    </tr>
+                    <tr id="sr6">
+                        <td class="cell" id="s50"></td>
+                        <td class="cell" id="s51"></td>
+                        <td class="cell" id="s52"></td>
+                        <td class="cell" id="s53"></td>
+                        <td class="cell" id="s54"></td>
+                        <td class="cell" id="s55"></td>
+                        <td class="cell" id="s56"></td>
+                        <td class="cell" id="s57"></td>
+                        <td class="cell" id="s58"></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr id="sr7">
+                        <td class="cell" id="s60"></td>
+                        <td class="cell" id="s61"></td>
+                        <td class="cell" id="s62"></td>
+                        <td class="cell" id="s63"></td>
+                        <td class="cell" id="s64"></td>
+                        <td class="cell" id="s65"></td>
+                        <td class="cell" id="s66"></td>
+                        <td class="cell" id="s67"></td>
+                        <td class="cell" id="s68"></td>
+                    </tr>
+                    <tr id="sr8">
+                        <td class="cell" id="s70"></td>
+                        <td class="cell" id="s71"></td>
+                        <td class="cell" id="s72"></td>
+                        <td class="cell" id="s73"></td>
+                        <td class="cell" id="s74"></td>
+                        <td class="cell" id="s75"></td>
+                        <td class="cell" id="s76"></td>
+                        <td class="cell" id="s77"></td>
+                        <td class="cell" id="s78"></td>
+                    </tr>
+                    <tr id="sr9">
+                        <td class="cell" id="s80"></td>
+                        <td class="cell" id="s81"></td>
+                        <td class="cell" id="s82"></td>
+                        <td class="cell" id="s83"></td>
+                        <td class="cell" id="s84"></td>
+                        <td class="cell" id="s85"></td>
+                        <td class="cell" id="s86"></td>
+                        <td class="cell" id="s87"></td>
+                        <td class="cell" id="s88"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
