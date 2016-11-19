@@ -1,9 +1,6 @@
-# Sudoku Helper
+# Sudoku-Helper
+A simple application which helps you solve a sudoku puzzle. This application checks for a valid grid and it also creates a list of suggestions for each square.
 
-This is a small web application built with javascript. This can check a sudoku grid to see whether it is correct. Additionally, suggestions can be made for each cell in the grid.
-
-####Deployment Instructions
-- Upload files to web server.
-- Input existing numbers into the grid.
-- Either check the grid to see whether it is correct or get some suggestions.
-
+## How to use
+- Place files in a web server and access.
+- Fill in squares with numbers and click either 'check grid' or 'get suggestions'
