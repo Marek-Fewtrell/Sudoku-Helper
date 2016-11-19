@@ -13,8 +13,12 @@
                 width:40px;
                 height:40px;
                 border: solid thin;
-                padding: 0;
-
+                padding: 5px;
+								text-align:center;
+            }
+            .cell {
+            	width: 40px;
+            	height: 40px;
             }
             td > input {
                 text-align:center;
@@ -23,11 +27,16 @@
                 width: 40px;
                 font-size: 30px;
             }
-
+						div {
+							float:left;
+						}
             colgroup, tbody {
                 border:dashed medium orange;
             }
 
+						.greyedOut{
+							color:grey;
+						}
             .validCell {
             }
             .invalidCell {
@@ -38,6 +47,10 @@
             }
             .invalidRow {
                 border: medium blue solid;
+            }
+            
+            #generalSuggestionsRow, #generalSuggestionsColumn, #generalSuggestionsGroup {
+            	text-align:right;
             }
         </style>
     </head>
@@ -182,7 +195,9 @@
 
                 <tbody>
                     <tr id="sr1"><!-- Top Row -->
-                        <td class="cell" id="s00"></td>
+                        <td class="cell" id="s00"> 
+                        	<span id="">1</span><span id="" class="greyedOut">2</span><span id="">3</span><span id="">4</span><span id="">5</span><span id="" class="greyedOut">6</span><span id="">7</span><span id="" class="greyedOut">8</span><span id="">9</span>
+                        </td>
                         <td class="cell" id="s01"></td>
                         <td class="cell" id="s02"></td>
                         <td class="cell" id="s03"></td>
@@ -286,6 +301,12 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div id="generalSuggestionsRow">
+        </div>
+        <div id="generalSuggestionsColumn">
+        </div>
+        <div id="generalSuggestionsGroup">
         </div>
     </body>
 </html>
