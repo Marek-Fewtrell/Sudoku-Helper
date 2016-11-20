@@ -1,10 +1,9 @@
 /*
 To Do List:
 
-Update UI.
 Create a proper 1-9 list in the suggestion boxes, Grey out any which won't be there.
-Check the suggestion grid (3x3 blocks) for any numbers that appear once.
-
+Improve the suggestions.
+Improve the UI.
 
 */
 
@@ -53,7 +52,7 @@ window.onload = function () {
 	}
     
 	function checkGrid() {
-		document.getElementById("checkOut").innerHTML = "Checking Grid...";
+		document.getElementById("checkOutput").innerHTML = "Checking Grid...";
 		clearGridStyle();
 		getGrid();
 
@@ -136,7 +135,7 @@ window.onload = function () {
 				}
 			}
 		}
-		document.getElementById("checkOut").innerHTML = "Grid Checked...";
+		document.getElementById("checkOutput").innerHTML = "Grid Checked...";
 	}
     
 	function checkRow(row) {
@@ -200,7 +199,7 @@ window.onload = function () {
 	function makeSuggestions() {
 		getGrid();
 		
-		document.getElementById("sugOutput").innerHTML = "Finding Suggestions...";
+		document.getElementById("suggestionOutput").innerHTML = "Finding Suggestions...";
 		
 		calculateGeneralSuggestions();
 		displayGeneralSuggestions();
@@ -209,7 +208,7 @@ window.onload = function () {
 		displaySuggestions();
 		suggestSingleNumbers();
 		
-		document.getElementById("sugOutput").innerHTML = "Finished Suggestions!";
+		document.getElementById("suggestionOutput").innerHTML = "Finished Suggestions!";
 	}
 	
 	function calculateSuggestions() {
@@ -310,6 +309,7 @@ window.onload = function () {
 	}
 	
 	function suggestSingleNumbers() {
+		document.getElementById("suggestionTips").innerHTML = "";
 		//get all cells in a group. combine all suggestions into one. If one number only has one occurence, only one spot for it.
 		
 		for (var i = 0; i < 9; i++) {
@@ -380,7 +380,9 @@ window.onload = function () {
 			//console.log(groupSuggestions);
 			for (var j=0; j<9; j++) {
 				if (groupSuggestions[j] == 1) {
-					console.log("Group " + (i+1) + " has a single digit somewhere!, Look for number " + (j+1));
+					var output = document.getElementById("suggestionTips");
+					output.innerText += "Group " + (i+1) + " has a single digit somewhere!, Look for number " + (j+1) + "\n";
+					//console.log("Group " + (i+1) + " has a single digit somewhere!, Look for number " + (j+1));
 				}
 			}
 		}
@@ -502,13 +504,13 @@ window.onload = function () {
 		var suggestionAreaRow = document.getElementById("generalSuggestionsRow");
 		var suggestionAreaColumn = document.getElementById("generalSuggestionsColumn");
 		var suggestionAreaGroup = document.getElementById("generalSuggestionsGroup");
-		suggestionAreaRow.innerText = "1,2,3,4,5,6,7,8,9\n";
-		suggestionAreaColumn.innerText = "1,2,3,4,5,6,7,8,9\n";
-		suggestionAreaGroup.innerText = "1,2,3,4,5,6,7,8,9\n";
+		suggestionAreaRow.innerText = "1|2|3|4|5|6|7|8|9\n";
+		suggestionAreaColumn.innerText = "1|2|3|4|5|6|7|8|9\n";
+		suggestionAreaGroup.innerText = "1|2|3|4|5|6|7|8|9\n";
 		for (var i = 0; i < 9; i++) {
-			suggestionAreaRow.innerText += "Row " + i + ": " + rowSuggestions[i] + "\n";
-			suggestionAreaColumn.innerText += "Column " + i + ": " + columnSuggestions[i] + "\n";
-			suggestionAreaGroup.innerText += "Group " + i + ": " + groupSuggestions[i] + "\n";
+			suggestionAreaRow.innerText += "Row " + i + ": " + rowSuggestions[i].join("|") + "\n";
+			suggestionAreaColumn.innerText += "Column " + i + ": " + columnSuggestions[i].join("|") + "\n";
+			suggestionAreaGroup.innerText += "Group " + i + ": " + groupSuggestions[i].join("|") + "\n";
 		}
 	}
 	
