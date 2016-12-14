@@ -2,8 +2,7 @@
 To Do List:
 
 Create a proper 1-9 list in the suggestion boxes, Grey out any which won't be there.
-Improve the suggestions.
-Improve the UI.
+Improve the UI in some way.
 
 */
 
@@ -201,8 +200,8 @@ window.onload = function () {
 		
 		document.getElementById("suggestionOutput").innerHTML = "Finding Suggestions...";
 		
-		calculateGeneralSuggestions();
-		displayGeneralSuggestions();
+		//calculateGeneralSuggestions();
+		//displayGeneralSuggestions();
 
 		calculateSuggestions();
 		displaySuggestions();
@@ -518,8 +517,8 @@ window.onload = function () {
 	function checkRowSuggestion(row, suggestions) {
 		for (var iterator = 0; iterator < 9; iterator++) {
 			if (sudokuGrid[row][iterator] > 0) {
-				suggestions[sudokuGrid[row][iterator] - 1]++;
-				//suggestions[sudokuGrid[row][iterator] - 1] = 1;
+				//suggestions[sudokuGrid[row][iterator] - 1]++;
+				suggestions[sudokuGrid[row][iterator] - 1] = 1;
 			}
 		}
 		return suggestions;
@@ -527,8 +526,8 @@ window.onload = function () {
 	function checkColumnSuggestion(column, suggestions) {
 		for (var iterator = 0; iterator < 9; iterator++) {
 			if (sudokuGrid[iterator][column] > 0) {
-				suggestions[sudokuGrid[iterator][column] - 1]++;
-				//suggestions[sudokuGrid[iterator][column] - 1] = 1;
+				//suggestions[sudokuGrid[iterator][column] - 1]++;
+				suggestions[sudokuGrid[iterator][column] - 1] = 1;
 			}
 		}
 		return suggestions;
@@ -537,8 +536,8 @@ window.onload = function () {
 		for (var groupRowIter = startingRow; groupRowIter < startingRow + 3; groupRowIter++) {
 			for (var groupColIter = startingCol; groupColIter < startingCol + 3; groupColIter++) {
 				if (sudokuGrid[groupRowIter][groupColIter] > 0) {
-					suggestions[sudokuGrid[groupRowIter][groupColIter] - 1]++;
-					//suggestions[sudokuGrid[groupRowIter][groupColIter] - 1] = 1;
+					//suggestions[sudokuGrid[groupRowIter][groupColIter] - 1]++;
+					suggestions[sudokuGrid[groupRowIter][groupColIter] - 1] = 1;
 				}
 			}
 		}
