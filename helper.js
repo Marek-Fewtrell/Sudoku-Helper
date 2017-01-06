@@ -287,10 +287,16 @@ window.onload = function () {
 		for (var i = 0; i < 9; i++) {
 			for (var j = 0; j < 9; j++) {
 				var suggestionCell = document.getElementById('s' + i + j);
+				
+				var suggestionNumbers = suggestionCell.getElementsByTagName("span");
+				//console.log(suggestionNumbers);
+				clearSuggestionNumbers(suggestionNumbers);
+				
 				var textSug = "";
 				var suggestedSolutions = suggestionSudokuGrid[i][j];
 				if (suggestedSolutions == 'x') {
 					textSug = 'x';
+					greyAllSuggestionNumbers(suggestionNumbers);
 				} else {
 					for (var sugCounter = 0; sugCounter < 9; sugCounter++) {
 						if (suggestedSolutions[sugCounter] == 0) {
@@ -299,11 +305,29 @@ window.onload = function () {
 							} else {
 								textSug += ", " + (sugCounter +1);
 							}
+						} else {
+							setSuggestionNumberGrey(suggestionNumbers, sugCounter);
 						}
 					}
 				}
-				suggestionCell.innerHTML = textSug;
+				//suggestionCell.innerHTML = textSug;
 			}
+		}
+	}
+	
+	function setSuggestionNumberGrey(suggestionNumbers, number) {
+		suggestionNumbers[number].className = "greyedOut";
+	}
+	
+	function greyAllSuggestionNumbers(suggestionNumbers) {
+		for (var i = 0; i < suggestionNumbers.length; i++) {
+			suggestionNumbers[i].className = "greyedOut";
+		}
+	}
+	
+	function clearSuggestionNumbers(suggestionNumbers) {
+		for (var i = 0; i < suggestionNumbers.length; i++) {
+			suggestionNumbers[i].className = "";
 		}
 	}
 	
